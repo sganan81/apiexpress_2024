@@ -66,7 +66,7 @@ const getEmpleadoOld = (req = request, res = response) =>{
 
 const getEmpleado = (req = request, res = response) =>{
 
-    const { id:idEmpleado } = req.params;
+    const { idEmpleado = '' } = req.params;
     console.log(idEmpleado);
     
 
