@@ -1,9 +1,6 @@
 require('dotenv').config()
 const Server = require('./models/server')
 
-const servidor = new Server();
+const servidor = new Server()
 
-servidor.listen();
-
-
-
+servidor.listen()
