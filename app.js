@@ -5,9 +5,6 @@ const servidor = new Server();
 
 servidor.listen();
 
-
-
-
 //gastonnnnn
 
 
@@ -18,5 +15,4 @@ servidor.listen();
 //gaston
 
 //gastonnnnn
-
 
