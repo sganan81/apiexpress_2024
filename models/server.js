@@ -14,7 +14,7 @@ class Server {
 
   rutas() {
     this.app.use("/pokemon", require("../routes/pokemons")); // Emiliano Correa
-    this.app.use("/api/v1/empleados", require("../routes/empleados")); // Integrante 2
+    this.app.use("/pokemon", require("../routes/moves")); // Haag Gomez Gaston Ivan
     /*   this.app.use('*', (req, res) => {
             res.status(404).send('Page not found');
         }); // Integrante 2 */
