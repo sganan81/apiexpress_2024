@@ -1,16 +1,13 @@
-
 const axios = require("axios");
 const { request, response } = require("express");
 
 const getMoves = (req = request, res = response) => {
-  const { results, count, next, previous } = req.query;
-  console.log(results, count, next, previous);
-  const filtro = results ? `?limit=${results}` : ""; 
+  const { limit } = req.query; 
+  const filtro = limit ? `?limit=${limit}` : ""; 
   axios
-    .get(`https://pokeapi.co/api/v2/move/${filtro}`)
+    .get(`https://pokeapi.co/api/v2/move${filtro}`)
     .then((response) => {
       const { data } = response;
-
       res.status(200).json({
         msg: "Ok",
         data,
@@ -25,10 +22,8 @@ const getMoves = (req = request, res = response) => {
     });
 };
 
-
 const getMove = (req = request, res = response) => {
-  const { idMove = "" } = req.params; 
-  console.log(idMove);
+  const { idMove } = req.params; // Usamos el parámetro idMove para obtener el movimiento específico
   axios
     .get(`https://pokeapi.co/api/v2/move/${idMove}`)
     .then((response) => {
@@ -47,8 +42,8 @@ const getMove = (req = request, res = response) => {
     });
 };
 
-
 module.exports = {
   getMoves,
   getMove,
 };
+
