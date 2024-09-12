@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app"
+    "start": "node app",
+    "lint": "npx standard",
+    "lint:fix": "npx standard --fix"
   },
   "author": "Sebastian Gañan",
   "license": "ISC",
@@ -15,6 +17,7 @@
     "express": "^4.19.2"
   },
   "devDependencies": {
-    "husky": "^9.1.6"
+    "husky": "^9.1.6",
+    "standard": "^17.1.0"
   }
 }
