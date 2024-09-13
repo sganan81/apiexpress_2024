@@ -23,7 +23,7 @@ const getMoves = (req = request, res = response) => {
 };
 
 const getMove = (req = request, res = response) => {
-  const { idMove } = req.params; // Usamos el parámetro idMove para obtener el movimiento específico
+  const { idMove } = req.params; 
   axios
     .get(`https://pokeapi.co/api/v2/move/${idMove}`)
     .then((response) => {

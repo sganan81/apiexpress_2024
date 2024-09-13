@@ -17,7 +17,7 @@ class Server {
   rutas() {
  
     this.app.use("/pokemon", require("../routes/pokemons"));
-    this.app.use("/pokemon", require("../routes/moves"));
+    this.app.use("/moves", require("../routes/moves"));
    // this.app.use("/pokemon", require("../routes/Id_Pokemon"));
   }
 
