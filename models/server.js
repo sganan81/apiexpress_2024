@@ -15,10 +15,9 @@ class Server {
   }
 
   rutas() {
- 
-    this.app.use("/pokemon", require("../routes/pokemons"));
-    this.app.use("/moves", require("../routes/moves"));
-   // this.app.use("/pokemon", require("../routes/Id_Pokemon"));
+    this.app.use("/pokemon", require("../routes/pokemons")); // Emiliano Correa
+    this.app.use("/moves", require("../routes/moves")); // Haag Gomez Gaston Ivan
+    this.app.use("/id_pokemon", require("../routes/id_pokemon")); //Evelin Paumgertner
   }
 
   listen() {
