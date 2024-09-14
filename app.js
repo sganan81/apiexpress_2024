@@ -5,14 +5,8 @@ const servidor = new Server();
 
 servidor.listen();
 
-//gastonnnnn
-
-
+//gaston
 //Facundo
 //Emiliano
 //Evelin
-
-//gaston
-
-//gastonnnnn
 //Neisa

@@ -1,3 +1,4 @@
+
 const express = require("express");
 
 class Server {
@@ -9,6 +10,7 @@ class Server {
   }
 
   middleware() {
+   
     this.app.use(express.static("public"));
   }
 
@@ -16,16 +18,15 @@ class Server {
     this.app.use("/pokemon", require("../routes/pokemons")); // Emiliano Correa
    // this.app.use("/moves", require("../routes/moves")); // Haag Gomez Gaston Ivan
     this.app.use("/id_pokemon", require("../routes/id_pokemon")); //Evelin Paumgertner
-    /*   this.app.use('*', (req, res) => {
-            res.status(404).send('Page not found');
-        }); // Integrante 2 */
   }
 
   listen() {
     this.app.listen(this.port, () => {
-      console.log(`La API esta escuchando en el this.PORT ${this.port}`);
+      console.log(`La API está escuchando en el puerto ${this.port}`);
     });
   }
 }
 
 module.exports = Server;
+
+
