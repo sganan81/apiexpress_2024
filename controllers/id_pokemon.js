@@ -17,9 +17,13 @@ const getPokemon1 = (req = request, res = response) => {
       });
     })
     .catch((error) => {
-      console.log(error);
-      res.status(400).json({
-        msg: "Error",
+      if (error.response && error.response.status === 404) {
+        return res.status(404).json({
+          msg: "No se encontró el Pokémon con el id proporcionado",
+        });
+      }
+      res.status(500).json({
+        msg: "Error en el servidor",
         error,
       });
     });
@@ -28,11 +32,20 @@ const getPokemon1 = (req = request, res = response) => {
 const getid_pokemon = (req = request, res = response) => {
   const { id_pokemon = "" } = req.params; 
 
+
   if (!id_pokemon) {
     return res.status(400).json({
-      msg: "El parámetro id_pokemon es requerido"
+      msg: "El parámetro id_pokemon es requerido",
     });
   }
+
+
+  if (isNaN(id_pokemon)) {
+    return res.status(422).json({
+      msg: "El parámetro id_pokemon debe ser un número válido",
+    });
+  }
+
   console.log(id_pokemon);
 
   axios
@@ -45,9 +58,13 @@ const getid_pokemon = (req = request, res = response) => {
       });
     })
     .catch((error) => {
-      console.log(error);
-      res.status(400).json({
-        msg: "Error",
+      if (error.response && error.response.status === 404) {
+        return res.status(404).json({
+          msg: "No se encontró el Pokémon con el id proporcionado",
+        });
+      }
+      res.status(500).json({
+        msg: "Error en el servidor",
         error,
       });
     });
@@ -57,4 +74,5 @@ module.exports = {
   getPokemon1,
   getid_pokemon,
 };
+
 
