@@ -2,10 +2,9 @@ const axios = require("axios");
 const { request, response } = require("express");
 
 const getPokemonList = (req = request, res = response) => {
-  const { id_pokemon, count, next, previous } = req.query; 
-  console.log(id_pokemon, count, next, previous);
-
-  const filtro = id_pokemon ? `/${id_pokemon}` : ""; 
+  const { limit = 50, page = 1 } = req.query;
+  const offset = (page - 1) * limit;
+  const filtro = `?limit=${limit}&offset=${offset}`;
 
   axios
     .get(`https://pokeapi.co/api/v2/pokemon${filtro}`) 
