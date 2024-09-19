@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { request, response } = require("express");
 
-const getPokemon1 = (req = request, res = response) => {
+const getPokemonList = (req = request, res = response) => {
   const { id_pokemon, count, next, previous } = req.query; 
   console.log(id_pokemon, count, next, previous);
 
@@ -71,7 +71,7 @@ const getid_pokemon = (req = request, res = response) => {
 };
 
 module.exports = {
-  getPokemon1,
+  getPokemonList,
   getid_pokemon,
 };
 

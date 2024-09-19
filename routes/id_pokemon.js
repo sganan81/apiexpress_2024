@@ -1,9 +1,9 @@
 const { Router } = require("express");
-const { getid_pokemon, getPokemon1 } = require("../controllers/id_pokemon");
+const { getid_pokemon, getPokemonList } = require("../controllers/id_pokemon");
 
 const rutas = Router();
 
-rutas.get("/", getPokemon1);
+rutas.get("/", getPokemonList);
 
 rutas.get("/:id_pokemon", getid_pokemon); 
 
