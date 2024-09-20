@@ -19,7 +19,7 @@ class Server {
     this.app.use("/moves", require("../routes/moves")); // Haag Gomez Gaston Ivan
     this.app.use("/id_pokemon", require("../routes/id_pokemon")); //Evelin Paumgertner
     this.app.use("/ability", require("../routes/ability")); //Facundo Reiseng
-    this.app.use("/type", require("../routes/type")); //Neisa Belleggia
+    this.app.use("/item", require("../routes/item")); //Neisa Belleggia
   }
 
   listen() {
