@@ -1,5 +1,6 @@
 const axios = require("axios");
 const { request, response } = require("express");
+const { apiUrl } = require('../config/config')
 
 const getPokemonList = (req = request, res = response) => {
   const { limit = 50, page = 1 } = req.query;
@@ -7,7 +8,7 @@ const getPokemonList = (req = request, res = response) => {
   const filtro = `?limit=${limit}&offset=${offset}`;
 
   axios
-    .get(`https://pokeapi.co/api/v2/pokemon${filtro}`) 
+    .get(`${apiUrl}/pokemon${filtro}`) 
     .then((response) => {
       const { data } = response;
       res.status(200).json({
@@ -48,7 +49,7 @@ const getid_pokemon = (req = request, res = response) => {
   console.log(id_pokemon);
 
   axios
-    .get(`https://pokeapi.co/api/v2/pokemon/${id_pokemon}`) 
+    .get(`${apiUrl}/pokemon/${id_pokemon}`) 
     .then((response) => {
       const { data } = response;
       res.status(200).json({
