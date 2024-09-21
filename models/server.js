@@ -18,6 +18,7 @@ class Server {
     /*   this.app.use('*', (req, res) => {
             res.status(404).send('Page not found');
         }); // Integrante 2 */
+    this.app.use('/api/v1/clima', require('../routes/clima'))
   }
 
   listen () {
