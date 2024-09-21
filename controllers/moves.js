@@ -1,12 +1,13 @@
 const axios = require("axios");
 const { request, response } = require("express");
+const { apiUrl } = require('../config/config')
 
 const getMoves = (req = request, res = response) => {
-  const { limit = 50 } = req.query; 
-  const filtro = `?limit=${limit}`; 
+  const { limit = 50 } = req.query;
+  const filtro = `?limit=${limit}`;
 
   axios
-    .get(`https://pokeapi.co/api/v2/move${filtro}`)
+  .get(apiUrl+`/move`+`${filtro}`)
     .then((response) => {
       const { data } = response;
       res.status(200).json({
@@ -34,7 +35,7 @@ const getMove = (req = request, res = response) => {
   const { idMove } = req.params;
 
   axios
-    .get(`https://pokeapi.co/api/v2/move/${idMove}`)
+    .get(apiUrl+`/move/${idMove}`)
     .then((response) => {
       const { data } = response;
       res.status(200).json({
