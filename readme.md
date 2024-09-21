@@ -18,3 +18,12 @@ http://localhost:3000/pokemon
 http://localhost:3000/pokemon/1
 3 - Query params:
 http://localhost:3000/pokemon?limit=10&page=2
+
+Endpoint "Obtener Habilidades por nombre o id" - Facundo Reiseng:
+1 - Registro de habilidades:
+http://localhost:3000/ability
+2 - Buscar habilidades por nombre (en ingles) o id:
+http://localhost:3000/ability/1
+http://localhost:3000/ability/stench
+3 - Query params:
+http://localhost:3000/ability?limit=15&page=3
