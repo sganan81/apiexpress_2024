@@ -13,12 +13,10 @@ class Server {
   }
 
   rutas () {
-    this.app.use('/api/v1/peliculas', require('../routes/peliculas')) // Integrante 1
-    this.app.use('/api/v1/empleados', require('../routes/empleados')) // Integrante 2
     /*   this.app.use('*', (req, res) => {
             res.status(404).send('Page not found');
         }); // Integrante 2 */
-    this.app.use('/api/v1/clima', require('../routes/clima'))
+    this.app.use('/api/v1/clima', require('../routes/clima'))// los 2 integrantes vamos a trabajar en las mismas rutas porque se basan en clima
   }
 
   listen () {
