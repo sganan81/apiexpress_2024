@@ -18,3 +18,11 @@ http://localhost:3000/pokemon
 http://localhost:3000/pokemon/1
 3 - Query params:
 http://localhost:3000/pokemon?limit=10&page=2
+ 
+Endpoint "Obtener listas de movimientos " - Gaston Ivan Haag Gomez:
+1 - Registro de movimientos:
+http://localhost:3000/moves
+2 - Buscar movimientos por ID:
+http://localhost:3000/moves/1
+3 - Query params:
+http://localhost:3000/moves?limit=50&page=1
