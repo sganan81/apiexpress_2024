@@ -25,6 +25,43 @@ const getClimaActualCordenadas = async (req, res) => {
     })
 }
 
+const getClimaActualPorCiudadFiltrado = async (req, res) => {
+  const { ciudad, lang = 'sp' } = req.query
+
+  if (!ciudad) {
+    return res.status(400).json({ error: 'La ciudad es necesaria para continuar.' })
+  }
+
+  axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${process.env.API_KEY}&lang=${lang}&units=metric`)
+    .then((response) => {
+      // Extraemos los datos relevantes
+      const { main, wind, weather, name } = response.data
+
+      // Creamos el objeto filtrado con los datos deseados
+      const climaFiltrado = {
+        ciudad: name,
+        descripcion: weather[0].description,
+        temperatura_maxima: main.temp_max,
+        temperatura_minima: main.temp_min,
+        sensacion_termica: main.feels_like,
+        viento: wind.speed
+      }
+
+      // Enviamos la respuesta con los datos filtrados
+      res.status(200).json({
+        msg: 'Ok',
+        clima: climaFiltrado
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+      res.status(400).json({
+        msg: 'Error',
+        error: error.message
+      })
+    })
+}
+
 const getClimaActualPorCiudad = async (req, res) => {
   const { ciudad, lang = 'sp' } = req.query
 
@@ -49,4 +86,4 @@ const getClimaActualPorCiudad = async (req, res) => {
     })
 }
 
-module.exports = { getClimaActualCordenadas, getClimaActualPorCiudad }
+module.exports = { getClimaActualCordenadas, getClimaActualPorCiudadFiltrado, getClimaActualPorCiudad }
