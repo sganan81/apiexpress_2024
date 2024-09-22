@@ -35,18 +35,6 @@ const getMoves = (req = request, res = response) => {
 const getMove = (req = request, res = response) => {
   const { idMove } = req.params;
 
-  if (!idMove) {
-    return res.status(400).json({
-      msg: 'El parámetro idMove es requerido',
-    });
-  }
-
-  const idRegex = /^[0-9]+$/; 
-  if (!idRegex.test(idMove)) {
-    return res.status(422).json({
-      msg: 'El parámetro idMove debe contener solo números',
-    });
-  }
 
   axios
     .get(apiUrl+`/move/${idMove}`)

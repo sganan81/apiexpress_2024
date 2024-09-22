@@ -22,8 +22,9 @@ http://localhost:3000/pokemon?limit=10&page=2
 Endpoint "Obtener listas de movimientos " - Gaston Ivan Haag Gomez:
 1 - Registro de movimientos:
 http://localhost:3000/moves
-2 - Buscar movimientos por ID:
+2 - Buscar movimientos por ID y nombre (en ingles y en caso de ser 2 palabras, con guion):
 http://localhost:3000/moves/1
+http://localhost:3000/moves/grass-knot
 3 - Query params:
 http://localhost:3000/moves?limit=50&page=1
 
