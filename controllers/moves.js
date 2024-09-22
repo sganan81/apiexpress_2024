@@ -3,8 +3,9 @@ const { request, response } = require("express");
 const { apiUrl } = require('../config/config')
 
 const getMoves = (req = request, res = response) => {
-  const { limit = 50 } = req.query;
-  const filtro = `?limit=${limit}`;
+  const { limit = 50, page = 1 } = req.query
+  const offset = (page - 1) * limit
+  const filtro = `?limit=${limit}&offset=${offset}`
 
   axios
   .get(apiUrl+`/move`+`${filtro}`)
@@ -33,6 +34,7 @@ const getMoves = (req = request, res = response) => {
 
 const getMove = (req = request, res = response) => {
   const { idMove } = req.params;
+
 
   axios
     .get(apiUrl+`/move/${idMove}`)
