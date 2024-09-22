@@ -24,4 +24,52 @@ const getPolucionAire = async (req, res) => {
     })
 }
 
-module.exports = { getPolucionAire }
+const getPolucionAireHistorica = async (req, res) => {
+  const { lat, lon, start, end, units = 'metric', lang = 'sp' } = req.query
+
+  if (!lat || !lon || !start || !end) {
+    return res.status(400).json({ error: 'Debe completar los parametros lar, lon, start, end para continuar' })
+  }
+
+  axios.get(`http://api.openweathermap.org/data/2.5/air_pollution/history?lat=${lat}&lon=${lon}&start=${start}&end=${end}&appid=${process.env.API_KEY}&units=${units}&lang=${lang}`)
+    .then((response) => {
+      const { data } = response
+      res.status(200).json({
+        msg: 'Ok',
+        data
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+      res.status(400).json({
+        msg: 'Error',
+        error
+      })
+    })
+}
+
+const getPolucionAireExtendida = async (req, res) => {
+  const { lat, lon, units = 'metric', lang = 'sp' } = req.query
+
+  if (!lat || !lon) {
+    return res.status(400).json({ error: 'Latitude y Longitus son necesarias.' })
+  }
+
+  axios.get(`http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${lat}&lon=${lon}&appid=${process.env.API_KEY}&units=${units}&lang=${lang}`)
+    .then((response) => {
+      const { data } = response
+      res.status(200).json({
+        msg: 'Ok',
+        data
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+      res.status(400).json({
+        msg: 'Error',
+        error
+      })
+    })
+}
+
+module.exports = { getPolucionAire, getPolucionAireHistorica, getPolucionAireExtendida }
