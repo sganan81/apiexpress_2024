@@ -32,29 +32,29 @@ Este proyecto es una API construida en Node.js y Express que proporciona acceso 
 - **Ejemplo:** `/api/v1/clima/extendidoPorCiudad?ciudad=bahia%20blanca`
 - **Descripción:** Proporciona el pronóstico del clima a 5 días con datos cada 3 horas para una ciudad que ingreses como parametro.
 
-### 4. Pronóstico a 5 Días por Codigo Postal
+### 5. Pronóstico a 5 Días por Codigo Postal
 - **Endpoint:** `/api/v1/clima/extendidoPorCodigoPostal?zip={zip}`
 - **Ejemplo:** `/api/v1/clima/extendidoPorCodigoPostal?zip=8000`
 - **Descripción:** Proporciona el pronóstico del clima a 5 días con datos cada 3 horas ingresando el codigo postal.
 
-### 5. Datos Actuales de Contaminación del Aire
+### 6. Datos Actuales de Contaminación del Aire
 - **Endpoint:** `/api/v1/clima/air_pollution?lat={lat}&lon={lon}`
 - **Ejemplo:** `/api/v1/aire/polucion?lat=-34.61&lon=-58.38`
 - **Descripción:** Obtiene información actual sobre la contaminación del aire para una ubicación específica.
 
-### 6. Datos Históricos de Contaminación del Aire
+### 7. Datos Históricos de Contaminación del Aire
 - **Endpoint:** `/api/v1/clima/air_pollution/history?lat={lat}&lon={lon}&start={start}&end={end}`
 - **Descripción:** Proporciona datos históricos de contaminación del aire para una ubicación específica entre fechas determinadas.
 
-### 7. Geocodificación Directa
+### 8. Geocodificación Directa
 - **Endpoint:** `/api/v1/clima/geo/direct?q={nombre_ciudad},{codigo_estado},{codigo_pais}&limit={limit}`
 - **Descripción:** Obtiene las coordenadas geográficas (latitud y longitud) de una ubicación especificada por su nombre.
 
-### 8. Coordenadas por Código Postal
+### 9. Coordenadas por Código Postal
 - **Endpoint:** `/api/v1/clima/geo/zip?zip={codigo_postal},{codigo_pais}`
 - **Descripción:** Proporciona las coordenadas geográficas a partir de un código postal específico.
 
-### 9. Geocodificación Inversa
+### 10. Geocodificación Inversa
 - **Endpoint:** `/api/v1/clima/geo/reverse?lat={lat}&lon={lon}&limit={limit}`
 - **Descripción:** Obtiene el nombre de la ubicación (ciudad o área) a partir de coordenadas geográficas específicas.
 
