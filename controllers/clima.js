@@ -73,4 +73,52 @@ const getClima5dias = async (req, res) => {
     })
 }
 
-module.exports = { getClimaActualCordenadas, getClimaActualPorCiudad, getClima5dias }
+const getClima5diasPorCiudad = async (req, res) => {
+  const { ciudad, units = 'metric', lang = 'sp' } = req.query
+
+  if (!ciudad) {
+    return res.status(400).json({ error: 'Ingrese la ciudad para poder continuar' })
+  }
+
+  axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${ciudad}&appid=${process.env.API_KEY}&lang=${lang}&units=${units}`)
+    .then((response) => {
+      const { data } = response
+      res.status(200).json({
+        msg: 'Ok',
+        data
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+      res.status(400).json({
+        msg: 'Error',
+        error
+      })
+    })
+}
+
+const getClima5diasPorCodigoPostal = async (req, res) => {
+  const { zip, country = 'AR', units = 'metric', lang = 'sp' } = req.query
+
+  if (!zip) {
+    return res.status(400).json({ error: 'Ingrese el codigo postal para poder continuar' })
+  }
+
+  axios.get(`https://api.openweathermap.org/data/2.5/forecast?zip=${zip},${country}&appid=${process.env.API_KEY}&lang=${lang}&units=${units}`)
+    .then((response) => {
+      const { data } = response
+      res.status(200).json({
+        msg: 'Ok',
+        data
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+      res.status(400).json({
+        msg: 'Error',
+        error
+      })
+    })
+}
+
+module.exports = { getClimaActualCordenadas, getClimaActualPorCiudad, getClima5dias, getClima5diasPorCiudad, getClima5diasPorCodigoPostal }
