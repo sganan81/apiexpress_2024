@@ -4,5 +4,5 @@ const rutas = Router()
 
 rutas.get('/ciudad', getCoordenadasDeCiudad)
 rutas.get('/codigoPostal', getCoordenadasPorCodigoPostal)
-rutas.get('/coordenadas',getCiudadPorCoordenadas)
+rutas.get('/coordenadas', getCiudadPorCoordenadas)
 module.exports = rutas
