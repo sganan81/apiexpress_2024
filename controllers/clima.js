@@ -47,7 +47,7 @@ const getClimaPorCoordenadasFiltrado = async (req, res) => {
     })
 }
 
-const getClimaPorCiudad = async (req, res) => {
+const getClimaPorCiudadFiltrado = async (req, res) => {
   const { units = 'metric', lang = 'sp' } = req.param
   const { ciudad } = req.params
   if (!ciudad) {
@@ -90,4 +90,4 @@ const getClimaPorCiudad = async (req, res) => {
       }
     })
 }
-module.exports = { getClimaPorCoordenadasFiltrado, getClimaPorCiudad }
+module.exports = { getClimaPorCoordenadasFiltrado, getClimaPorCiudadFiltrado }
