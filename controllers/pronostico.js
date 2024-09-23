@@ -16,16 +16,28 @@ const getClima5dias = async (req, res) => {
       })
     })
     .catch((error) => {
-      console.log(error)
-      res.status(400).json({
-        msg: 'Error',
-        error
-      })
+      console.error(error)
+      if (error.response) {
+        return res.status(error.response.status).json({
+          status: 'error',
+          msg: 'Error al obtener datos del clima',
+          error: error.response.data.message || error.response.statusText,
+          statusCode: error.response.status
+        })
+      } else {
+        res.status(500).json({
+          status: 'error',
+          msg: 'Error inesperado al obtener la información',
+          error: error.message,
+          statusCode: 500
+        })
+      }
     })
 }
 
 const getClima5diasPorCiudad = async (req, res) => {
-  const { ciudad, units = 'metric', lang = 'sp' } = req.query
+  const { units = 'metric', lang = 'sp' } = req.query
+  const { ciudad } = req.params
 
   if (!ciudad) {
     return res.status(400).json({ error: 'Ingrese la ciudad para poder continuar' })
@@ -40,11 +52,22 @@ const getClima5diasPorCiudad = async (req, res) => {
       })
     })
     .catch((error) => {
-      console.log(error)
-      res.status(400).json({
-        msg: 'Error',
-        error
-      })
+      console.error(error)
+      if (error.response) {
+        return res.status(error.response.status).json({
+          status: 'error',
+          msg: 'Error al obtener datos del clima',
+          error: error.response.data.message || error.response.statusText,
+          statusCode: error.response.status
+        })
+      } else {
+        res.status(500).json({
+          status: 'error',
+          msg: 'Error inesperado al obtener la información',
+          error: error.message,
+          statusCode: 500
+        })
+      }
     })
 }
 
@@ -64,11 +87,22 @@ const getClima5diasPorCodigoPostal = async (req, res) => {
       })
     })
     .catch((error) => {
-      console.log(error)
-      res.status(400).json({
-        msg: 'Error',
-        error
-      })
+      console.error(error)
+      if (error.response) {
+        return res.status(error.response.status).json({
+          status: 'error',
+          msg: 'Error al obtener datos del clima',
+          error: error.response.data.message || error.response.statusText,
+          statusCode: error.response.status
+        })
+      } else {
+        res.status(500).json({
+          status: 'error',
+          msg: 'Error inesperado al obtener la información',
+          error: error.message,
+          statusCode: 500
+        })
+      }
     })
 }
 
