@@ -59,7 +59,7 @@ http://localhost:3000/ability/1
 
 http://localhost:3000/ability/stench
 
-http://localhost:3000/ability/quick-attack
+http://localhost:3000/ability/flash-fire
 
 3 - Query params:
 
