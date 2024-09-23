@@ -14,7 +14,7 @@ class Server {
 
   rutas () {
     this.app.use('/api/v1/clima', require('../routes/clima'))
-    // this.app.use('/api/v1/geocoding', require('../routes/geocoding'))
+    this.app.use('/api/v1/geocoding', require('../routes/geocoding'))
   }
 
   listen () {

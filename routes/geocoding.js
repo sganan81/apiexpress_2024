@@ -1,8 +1,7 @@
-/* const { Router } = require('express')
-const { getGeocodingInverso } = require('../controllers/geocoding')
+const { Router } = require('express')
+const { getCoordenadasDeCiudad } = require('../controllers/geocoding')
 const rutas = Router()
 
-rutas.get('/inversa', getGeocodingInverso)
+rutas.get('/ciudad', getCoordenadasDeCiudad)
 
 module.exports = rutas
-*/

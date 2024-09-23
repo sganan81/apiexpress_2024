@@ -29,11 +29,21 @@ const getClimaPorCoordenadasFiltrado = async (req, res) => {
       })
     })
     .catch((error) => {
-      console.log(error)
-      res.status(400).json({
-        msg: 'Error',
-        error
-      })
+      console.error(error)
+      if (error.response) {
+        // Errores de la respuesta de la API (como un 404 si las coordenadas no se encuentran)
+        res.status(error.response.status).json({
+          status: 'error',
+          msg: 'Error al obtener datos del clima',
+          error: error.response.data.message || error.response.statusText
+        })
+      } else {
+        res.status(500).json({
+          status: 'error',
+          msg: 'Error inesperado al obtener la información',
+          error: error.message
+        })
+      }
     })
 }
 
@@ -59,16 +69,25 @@ const getClimaPorCiudad = async (req, res) => {
         viento: wind.speed
       }
       res.status(200).json({
-        msg: 'Ok',
-        filtro
+        status: 'ok',
+        data: filtro
       })
     })
     .catch((error) => {
-      console.log(error)
-      res.status(400).json({
-        msg: 'Error',
-        error
-      })
+      console.error(error)
+      if (error.response) {
+        res.status(error.response.status).json({
+          status: 'error',
+          msg: 'Error al obtener datos del clima',
+          error: error.response.data.message || error.response.statusText
+        })
+      } else {
+        res.status(500).json({
+          status: 'error',
+          msg: 'Error inesperado al obtener la información',
+          error: error.message
+        })
+      }
     })
 }
 module.exports = { getClimaPorCoordenadasFiltrado, getClimaPorCiudad }
