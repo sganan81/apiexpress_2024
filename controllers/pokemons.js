@@ -48,7 +48,7 @@ const getPokemon = (req = request, res = response) => {
   }
 
   axios
-    .get(apiUrl+`/pokemon`+`${nombre_pokemon}`)
+    .get(apiUrl+`/pokemon/`+`${nombre_pokemon}`)
     .then((response) => {
       const { data } = response
       res.status(200).json({
