@@ -4,5 +4,4 @@ const rutas = Router()
 
 rutas.get('/ciudad', getClimaActualPorCiudad)
 
-
 module.exports = rutas
