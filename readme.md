@@ -15,6 +15,7 @@ http://localhost:3000/id_pokemon/1
 
 3 - Query params:
 
+<<<<<<< HEAD
 http://localhost:3000/id_pokemon?limit=10&page=2
 
 Endpoint "Obtener un Pokémon por Nombre de pokemon" - Emiliano Correa:
@@ -64,3 +65,12 @@ http://localhost:3000/ability/flash-fire
 3 - Query params:
 
 http://localhost:3000/ability?limit=15&page=3
+=======
+Endpoint "Obtener un Pokémon por Item" - Neisa Belleggia:
+1 - Registro de Item Pokemons:
+http://localhost:3000/item
+2 - Buscar item específico por ID:
+http://localhost:3000/item/idItem  (ejemplo http://localhost:3000/item/1)
+3 - Query params:
+http://localhost:3000/item?limit=50&page=1
+>>>>>>> 604be17 (Readme)
