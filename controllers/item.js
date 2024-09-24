@@ -1,5 +1,6 @@
 const axios = require("axios");
 const { request, response } = require("express");
+const { apiUrl } = require('../config/config')
 
 const getItems = (req = request, res = response) => {
   const { limit = 50, page = 1 } = req.query;
@@ -7,7 +8,7 @@ const getItems = (req = request, res = response) => {
   const filtro = `?limit=${limit}&offset=${offset}`;
 
   axios
-    .get(`https://pokeapi.co/api/v2/item${filtro}`)
+    .get(`${apiUrl}/item${filtro}`)
     .then((axiosResponse) => { 
       const { data } = axiosResponse;
       res.status(200).json({
@@ -39,7 +40,7 @@ const getItem = (req = request, res = response) => {
   }
 
   axios
-    .get(`https://pokeapi.co/api/v2/item/${idItem}`)
+    .get(`${apiUrl}/item/${idItem}`)
     .then((axiosResponse) => { 
       const { data } = axiosResponse;
       res.status(200).json({
