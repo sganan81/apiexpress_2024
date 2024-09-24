@@ -16,10 +16,14 @@ const getItems = (req = request, res = response) => {
       });
     })
     .catch((error) => {
-      console.error(error); 
-      res.status(400).json({
-        msg: "Error",
-        error: error.message || "Ocurrió un error al obtener los ítems",
+      if (error.response && error.response.status === 404) {
+        return res.status(404).json({
+          msg: 'Error al obtener los ítems',
+        });
+      }
+      res.status(500).json({
+        msg: 'Error en el servidor',
+        error
       });
     });
 };
@@ -44,12 +48,14 @@ const getItem = (req = request, res = response) => {
       });
     })
     .catch((error) => {
-      console.error(error); 
-      res.status(400).json({
-        msg: "Error",
-        error: error.response && error.response.data
-          ? error.response.data
-          : error.message || "Ocurrió un error al obtener el ítem",
+      if (error.response && error.response.status === 404) {
+        return res.status(404).json({
+          msg: 'No se encontró el ítem con el ID proporcionado'
+        });
+      }
+      res.status(500).json({
+        msg: 'Error en el servidor',
+        error
       });
     });
 };
