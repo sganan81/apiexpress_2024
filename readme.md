@@ -2,6 +2,7 @@
 
 La api no requiere clave, se puede ejecutar con
 node app.js
+Repsotorio GitHub: https://github.com/reiken27/apiexpress_2024.git
 
 Endpoint "Obtener un Pokémon por ID" - Evelin Paumgertner:
 
