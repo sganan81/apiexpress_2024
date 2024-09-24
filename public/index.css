@@ -43,12 +43,15 @@ h4{
 }
 
 ul{
-    font-size: 16px;
+    font-size: 15px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    list-style-position: inside;
 }
 
+
 hr{
-    width: 1200px;
+    width: 1400px;
     size: 10px;
 
 }
