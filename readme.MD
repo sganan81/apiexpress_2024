@@ -1,23 +1,81 @@
-## API con express creada con NodeJS
-A continuación, describo los endpoints implementados en este proyecto. Cada uno sigue un flujo consistente:
--Parámetros: Se reciben los parámetros necesarios para la operación, y se verifica si alguno es obligatorio y está vacío. En ese caso, se responde con un mensaje de error.
+# API de Clima - Proyecto Node.js
 
--Petición a la API: Uso la API proporcionada para obtener los datos requeridos. La ruta de la API incluye los parámetros que determinan los valores que se solicitan.
+## Introducción
 
--Respuesta en JSON: Los datos obtenidos son procesados y filtrados según la relevancia. En algunos casos, se descartan ciertos datos no esenciales antes de enviar la respuesta en formato JSON.
+Este proyecto es una API construida en Node.js y Express que proporciona acceso a datos climáticos a través de la API de OpenWeather. La API permite a los usuarios obtener información sobre el clima actual, pronósticos, datos de contaminación del aire y geocodificación.
 
--Manejo de errores: Se implementan verificaciones de errores y se manejan de forma adecuada, devolviendo respuestas claras al cliente con los códigos de estado correspondientes.
+## Integrantes del Grupo
 
--Los métodos definidos en la carpeta Controller son exportados para su uso en la carpeta routes.
+- Ignacio Sotomayor
+- Lucas Bertone
 
-1) getPolucionFutura: Muestra los datos del aire a futuro de una ubicacion especifica dada por coordenadas.
+## Flujo General de la API
 
-2) getClimaPorCoordenadasFiltrado: Muestra los datos del clima de una ubicacion especifica dada por coordenadas.
+- **Parámetros:** Se reciben los parámetros necesarios para cada operación, verificando si alguno es obligatorio. Si falta alguno, se devuelve un mensaje de error.
+- **Peticiones a la API:** Se utiliza la API de OpenWeather para obtener los datos solicitados. Los parámetros requeridos se incluyen en la ruta de la API.
+- **Respuesta en JSON:** Los datos obtenidos son procesados y filtrados según la relevancia, devolviendo la respuesta en formato JSON.
+- **Manejo de errores:** Se implementan verificaciones de errores, manejándolos adecuadamente y devolviendo respuestas claras con los códigos de estado correspondientes.
 
-3) getClimaPorCiudadFiltrado: Muestra los datos del clima por la ciudad que ingrese el usuario.
+## Endpoints Implementados
 
-4) getCoordenadasDeCiudad: Muestra las coordenadas de la ciudad que ingrese el usuario.
+### Endpoints de Ignacio Sotomayor
 
-5) getCiudadPorCoordenadas: Lo inverso a lo anterior, muestra la ciudad por las coordenadas ingresadas.
+1. **Polución Futura por Coordenadas**
+   - **Endpoint:** `/api/v1/aire/polucionFutura?lat={lat}&lon={lon}`
+   - **Descripción:** Muestra los datos de contaminación del aire a futuro para una ubicación específica dada por coordenadas.
 
-6) getCoordenadasPorCodigoPostal: Muestra las coordenadas de la ubicacion ingresada por el codigo postal.
+2. **Clima Actual por Coordenadas Filtrado**
+   - **Endpoint:** `/api/v1/clima/coordenadas?lat={lat}&lon={lon}`
+   - **Descripción:** Muestra los datos climáticos actuales para una ubicación específica dada por sus coordenadas, filtrando los datos no esenciales.
+
+3. **Clima Actual por Ciudad Filtrado**
+   - **Endpoint:** `/api/v1/clima/ciudadFiltrada?ciudad={nombre_ciudad}`
+   - **Descripción:** Muestra los datos climáticos actuales para la ciudad especificada por el usuario, con los datos relevantes filtrados.
+
+4. **Obtener Coordenadas de una Ciudad**
+   - **Endpoint:** `/api/v1/geocoding/coordenadasPorCiudad?ciudad={nombre_ciudad}`
+   - **Descripción:** Devuelve las coordenadas geográficas de una ciudad ingresada por el usuario.
+
+5. **Obtener Ciudad por Coordenadas**
+   - **Endpoint:** `/api/v1/geocoding/ciudadPorCoordenadas?lat={lat}&lon={lon}`
+   - **Descripción:** Devuelve el nombre de la ciudad correspondiente a unas coordenadas geográficas ingresadas.
+
+6. **Obtener Coordenadas por Código Postal**
+   - **Endpoint:** `/api/v1/geocoding/coordenadasPorCodigoPostal?zip={codigo_postal}`
+   - **Descripción:** Devuelve las coordenadas geográficas de una ubicación ingresada por código postal.
+
+### Endpoints de Lucas Bertone
+
+1. **Clima Actual por Nombre de Ciudad**
+   - **Endpoint:** `/api/v1/clima/ciudad?ciudad={nombre_ciudad}`
+   - **Ejemplo:** `/api/v1/clima/ciudad?ciudad=bahia%20blanca`
+   - **Descripción:** Obtiene el clima actual para una ubicación especificada por su nombre.
+
+2. **Pronóstico a 5 Días por Coordenadas**
+   - **Endpoint:** `/api/v1/pronostico/extendido?lat={lat}&lon={lon}`
+   - **Ejemplo:** `/api/v1/pronostico/extendido?lat=-34.61&lon=-58.38`
+   - **Descripción:** Proporciona el pronóstico del clima a 5 días con datos cada 3 horas para una ubicación específica.
+
+3. **Pronóstico a 5 Días por Ciudad**
+   - **Endpoint:** `/api/v1/pronostico/extendidoPorCiudad/:ciudad`
+   - **Ejemplo:** `/api/v1/pronostico/extendidoPorCiudad/Bahia Blanca`
+   - **Descripción:** Proporciona el pronóstico del clima a 5 días con datos cada 3 horas para una ciudad ingresada como parámetro.
+
+4. **Pronóstico a 5 Días por Código Postal**
+   - **Endpoint:** `/api/v1/pronostico/extendidoPorCodigoPostal?zip={zip}`
+   - **Ejemplo:** `/api/v1/pronostico/extendidoPorCodigoPostal?zip=8000`
+   - **Descripción:** Proporciona el pronóstico del clima a 5 días con datos cada 3 horas, ingresando el código postal.
+
+5. **Datos Actuales de Contaminación del Aire**
+   - **Endpoint:** `/api/v1/aire/polucion?lat={lat}&lon={lon}`
+   - **Ejemplo:** `/api/v1/aire/polucion?lat=-34.61&lon=-58.38`
+   - **Descripción:** Obtiene información actual sobre la contaminación del aire para una ubicación específica.
+
+6. **Datos Históricos de Contaminación del Aire**
+   - **Endpoint:** `/api/v1/aire/polucionHistorica?lat={lat}&lon={lon}&start={start}&end={end}`
+   - **Ejemplo:** `/api/v1/aire/polucionHistorica?lat=-34.61&lon=-58.38&start=1694803200&end=1694889600`
+   - **Descripción:** Obtiene información histórica sobre la contaminación del aire para una ubicación específica y en una franja de tiempo definida. El formato de la fecha está en timestamp Unix (utiliza herramientas como epochconverter.com para convertirlo).
+
+---
+
+

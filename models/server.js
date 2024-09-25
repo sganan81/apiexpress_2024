@@ -16,6 +16,7 @@ class Server {
     this.app.use('/api/v1/clima', require('../routes/clima'))
     this.app.use('/api/v1/geocoding', require('../routes/geocoding'))
     this.app.use('/api/v1/aire', require('../routes/aire'))
+    this.app.use('/api/v1/pronostico', require('../routes/pronostico'))
   }
 
   listen () {

@@ -1,17 +1,21 @@
-const axios = require('axios')
+const axios = require('axios');
 
+// Obtener clima por coordenadas con filtro
 const getClimaPorCoordenadasFiltrado = async (req, res) => {
-  const { lon, lat, units = 'metric', lang = 'sp' } = req.query
+  const { lon, lat, units = 'metric', lang = 'sp' } = req.query;
 
   if (!lon || !lat) {
     return res.status(400).json({
-      msg: 'Se requiere la latitud y la longitud'
-    })
+      msg: 'Se requiere la latitud y la longitud',
+    });
   }
 
-  axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.API_KEY}&units=${units}&lang=${lang}`)
+  axios
+    .get(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.API_KEY}&units=${units}&lang=${lang}`
+    )
     .then((response) => {
-      const { main, wind, weather, lat, lon } = response.data
+      const { main, wind, weather } = response.data;
       const filtro = {
         descripcion: weather[0].description,
         temperatura: main.temp,
@@ -21,44 +25,89 @@ const getClimaPorCoordenadasFiltrado = async (req, res) => {
         humedad: main.humidity,
         viento: wind.speed,
         latitud: lat,
-        longitud: lon
-      }
+        longitud: lon,
+      };
       res.status(200).json({
         msg: 'Ok',
-        filtro
-      })
+        filtro,
+      });
     })
     .catch((error) => {
-      console.error(error)
+      console.error(error);
       if (error.response) {
-        // Errores de la respuesta de la API (como un 404 si las coordenadas no se encuentran)
         res.status(error.response.status).json({
           status: 'error',
           msg: 'Error al obtener datos del clima',
-          error: error.response.data.message || error.response.statusText
-        })
+          error: error.response.data.message || error.response.statusText,
+        });
       } else {
         res.status(500).json({
           status: 'error',
           msg: 'Error inesperado al obtener la información',
-          error: error.message
-        })
+          error: error.message,
+        });
       }
-    })
-}
+    });
+};
 
-const getClimaPorCiudadFiltrado = async (req, res) => {
-  const { units = 'metric', lang = 'sp' } = req.param
-  const { ciudad } = req.params
+// Obtener clima actual por ciudad
+const getClimaActualPorCiudad = async (req, res) => {
+  const { ciudad, lang = 'sp' } = req.query;
+
   if (!ciudad) {
     return res.status(400).json({
-      msg: 'Se requiere la ciudad.'
-    })
+      error: 'La ciudad es necesaria para continuar.',
+    });
   }
 
-  axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${process.env.API_KEY}&units=${units}&lang=${lang}`)
+  axios
+    .get(
+      `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${process.env.API_KEY}&lang=${lang}`
+    )
     .then((response) => {
-      const { main, wind, weather } = response.data
+      const { data } = response;
+      res.status(200).json({
+        msg: 'Ok',
+        data,
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      if (error.response) {
+        return res.status(error.response.status).json({
+          status: 'error',
+          msg: 'Error al obtener datos del clima',
+          error: error.response.data.message || error.response.statusText,
+          statusCode: error.response.status,
+        });
+      } else {
+        res.status(500).json({
+          status: 'error',
+          msg: 'Error inesperado al obtener la información',
+          error: error.message,
+          statusCode: 500,
+        });
+      }
+    });
+};
+
+// Obtener clima por ciudad con filtro
+const getClimaPorCiudadFiltrado = async (req, res) => {
+  const { units = 'metric', lang = 'sp' } = req.query;
+  const { ciudad } = req.params;
+
+  if (!ciudad) {
+    return res.status(400).json({
+      msg: 'Se requiere la ciudad.',
+    });
+  }
+
+  axios
+    .get(
+      `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${process.env.API_KEY}&units=${units}&lang=${lang}`
+    )
+    .then((response) => {
+      const { main, wind, weather } = response.data;
       const filtro = {
         descripcion: weather[0].description,
         temperatura: main.temp,
@@ -66,28 +115,33 @@ const getClimaPorCiudadFiltrado = async (req, res) => {
         temp_maxima: main.temp_max,
         sensacion_termica: main.feels_like,
         humedad: main.humidity,
-        viento: wind.speed
-      }
+        viento: wind.speed,
+      };
       res.status(200).json({
         status: 'ok',
-        data: filtro
-      })
+        data: filtro,
+      });
     })
     .catch((error) => {
-      console.error(error)
+      console.error(error);
       if (error.response) {
         res.status(error.response.status).json({
           status: 'error',
           msg: 'Error al obtener datos del clima',
-          error: error.response.data.message || error.response.statusText
-        })
+          error: error.response.data.message || error.response.statusText,
+        });
       } else {
         res.status(500).json({
           status: 'error',
           msg: 'Error inesperado al obtener la información',
-          error: error.message
-        })
+          error: error.message,
+        });
       }
-    })
-}
-module.exports = { getClimaPorCoordenadasFiltrado, getClimaPorCiudadFiltrado }
+    });
+};
+
+module.exports = {
+  getClimaPorCoordenadasFiltrado,
+  getClimaActualPorCiudad,
+  getClimaPorCiudadFiltrado,
+};
