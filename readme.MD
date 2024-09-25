@@ -9,9 +9,7 @@ Este proyecto es una API construida en Node.js y Express que proporciona acceso 
 - Ignacio Sotomayor
 - Lucas Bertone
 
- 
-
-## Bertone Endpoints
+##  Lucas Bertone Endpoints
 
 
 ### 1. Clima Actual por Nombre de Ciudad
@@ -43,8 +41,3 @@ Este proyecto es una API construida en Node.js y Express que proporciona acceso 
 - **Endpoint:** `/api/v1/aire/polucionHistorica?lat={lat}&lon={lon}&start{start}&end={end}`
 - **Ejemplo:** `/api/v1/aire/polucionHistorica?lat=-34.61&lon=-58.38&start=1694803200&end=1694889600`
 - **Descripción:** Obtiene información historica sobre la contaminación del aire para una ubicación específica y en una franja de tiempo determinado por el usuario. El formato de la fecha esta en timestamp Unix para convertirlo podemos usar una herramienta como epochconverter.com
-
-
-
-
-
