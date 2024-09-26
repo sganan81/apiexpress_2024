@@ -2,7 +2,7 @@
 
 ## Introducción
 
-Este proyecto es una API construida en Node.js y Express que proporciona acceso a datos climáticos a través de la API de OpenWeather. La API permite a los usuarios obtener información sobre el clima actual, pronósticos, datos de contaminación del aire y geocodificación.
+Este proyecto es una API construida en Node.js y Express que proporciona acceso a datos climáticos a través de la API de OpenWeather. La API permite a los usuarios obtener información sobre el clima actual, pronósticos, datos de contaminación del aire y geocodificación. Todos los endpoints estan disponibles en el index de nuestro proyecto que ingresas usando localhost:3000
 
 ## Integrantes del Grupo
 
