@@ -3,14 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
     <title>API EXPRESS</title>
 </head>
 <body>
+    <div>
     <h1>Api con NodeJS</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit ea modi recusandae quam odio? Reiciendis earum repudiandae et, dolorum doloremque eaque facilis reprehenderit quia nostrum quibusdam laudantium eveniet fugit dolores?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit ea modi recusandae quam odio? Reiciendis earum repudiandae et, dolorum doloremque eaque facilis reprehenderit quia nostrum quibusdam laudantium eveniet fugit dolores?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit ea modi recusandae quam odio? Reiciendis earum repudiandae et, dolorum doloremque eaque facilis reprehenderit quia nostrum quibusdam laudantium eveniet fugit dolores?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit ea modi recusandae quam odio? Reiciendis earum repudiandae et, dolorum doloremque eaque facilis reprehenderit quia nostrum quibusdam laudantium eveniet fugit dolores?</p>
+    <h2>Trabajada con OpenWeather</h2>
+    <h4><u>Grupo 7 >> Lucas Bertone e Ignacio Sotomayor</u><h4>
+        <hr>
+    <h4><i>Rutas de la API:</i><h4>
+    <ul>
+        <li><u>Clima por coordenadas:</u> '/api/v1/clima/coordenadas?lat=${lat}&lon=${lon}'', ejemplo: '/api/v1/clima/coordenadas?lat=-34.61&lon=-58.38'</li>
+        <li><u>Clima por el nombre de la ciudad filtrado:</u> '/api/v1/clima/ciudad/:ciudad', ejemplo: '/api/v1/clima/ciudad/Buenos Aires'</li>
+        <li><u>Clima por el nombre de la ciudad:</u> '/api/v1/clima/ciudad?ciudad={nombre_ciudad}'', ejemplo: '/api/v1/clima/ciudad?ciudad=Paris'</li>
+        <li><u>Pronostico a 5 dias por coordenadas:</u> '/api/v1/pronostico/extendido?lat={lat}&lon={lon}'', ejemplo: '/api/v1/pronostico/extendido?lat=-34.61&lon=-58.38'</li>
+        <li><u>Pronostico a 5 dias por el nombre de la ciudad:</u> '/api/v1/pronostico/extendidoPorCiudad/:ciudad', ejemplo: '/api/v1/pronostico/extendidoPorCiudad/Bahia Blanca'</u></li>
+        <li><u>Pronostico a 5 dias por Codigo Postal:</u> '/api/v1/pronostico/extendidoPorCodigoPostal?zip={zip}'', ejemplo: '/api/v1/pronostico/extendidoPorCodigoPostal?zip=8000'</li>
+        <li><u>Datos actuales de Contaminacion del aire:</u> '/api/v1/aire/polucion?lat={lat}&lon={lon}'', ejemplo: '/api/v1/aire/polucion?lat=-34.61&lon=-58.38'</li>
+        <li><u>Datos historicos de Contaminacion del aire:</u> '/api/v1/aire/polucionHistorica?lat={lat}&lon={lon}&start{start}&end={end}'', ejemplo: '/api/v1/aire/polucionHistorica?lat=-34.61&lon=-58.38&start=1694803200&end=1694889600' </li>
+        <li><u>Datos a futuro de Contaminacion del aire:</u> '/api/v1/aire/polucionFutura?lat={lat}&lon={lon}', ejemplo: '/api/v1/aire/polucionFutura?lat=-34.61&lon=-58.38'</li> 
+        <li><u>Obtener coordenadas de Ciudad:</u> '/api/v1/geocoding/ciudad?q=${q}', ejemplo: '/api/v1/geocoding/ciudad?q=Buenos Aires'</u></li> 
+        <li><u>Obtener coordenadas de Codigo Postal</u> 'api/v1/geocoding/codigoPostal?zip=${zip}, ejemplo: 'api/v1/geocoding/codigoPostal?zip=8000'</li>
+        <li><u>Obtener ciudad por coordenadas:</u> '/api/v1/geocoding/coordenadas?lat=${lat}&lon=${lon}', ejemplo: '/api/v1/geocoding/coordenadas?lat=-34.61&lon=-58.38'</li>
+    </ul>
+    </div>   
     
 </body>
 </html>
